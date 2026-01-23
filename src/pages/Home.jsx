@@ -204,7 +204,7 @@ const Home = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="/images/profile_pic-removebg-preview.png"
+              src="/Portfolio-website/images/profile_pic-removebg-preview.png"
               alt="Profile"
               className="w-full h-full object-cover"
               onError={(e) => {
