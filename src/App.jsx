@@ -10,7 +10,7 @@ import Achievements from './pages/Achievements'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
-import PixelBatTransition from './components/PixelBatTransition'
+import SpiderManTransition from './components/SpiderManTransition'
 import { SoundProvider } from './context/SoundContext'
 
 function AppRoutes() {
@@ -19,7 +19,7 @@ function AppRoutes() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <Navbar />
-      <PixelBatTransition />
+      <SpiderManTransition />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
@@ -39,7 +39,7 @@ function AppRoutes() {
 function App() {
   return (
     <SoundProvider>
-      <Router>
+      <Router basename="/Portfolio-website">
         <AppRoutes />
       </Router>
     </SoundProvider>

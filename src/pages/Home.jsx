@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useSound } from '../context/SoundContext'
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { getImagePath } from '../utils/imageUtils'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -204,7 +205,7 @@ const Home = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="/Portfolio-website/images/profile_pic-removebg-preview.png"
+              src={getImagePath('profile_pic-removebg-preview.png')}
               alt="Profile"
               className="w-full h-full object-cover"
               onError={(e) => {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSound } from '../context/SoundContext'
 import { Award, Trophy, Star, Zap, X } from 'lucide-react'
+import { getImagePath } from '../utils/imageUtils'
 
 const Achievements = () => {
   const { playPageTransitionSound, playClickSound } = useSound()
@@ -15,61 +16,61 @@ const Achievements = () => {
   {
     title: 'Finalist – Smart India Hackathon 2025 National Grand Finale',
     description: 'Top 1,360 teams nationwide',
-    image: '/Portfolio-website/images/SIH_1_2025.jpeg',
+    image: getImagePath('SIH_1_2025.jpeg'),
     icon: Trophy,
     color: 'from-red-500 to-orange-500',
     date: '2025',
     details:
       'Demonstrated strong problem-solving, growth mindset, creativity, and teamwork while competing among 1,360 finalist teams selected from 72,000+ teams and 826,000+ students across 2,587 institutes, showcasing software engineering expertise in computer science, data structures, algorithms, and management.',
     gallery: [
-      '/Portfolio-website/images/SIH_1_2025.jpeg',
-      '/Portfolio-website/images/SIH_2_2025.jpeg',
-      '/Portfolio-website/images/SIH_3_2025.jpeg',
+      getImagePath('SIH_1_2025.jpeg'),
+      getImagePath('SIH_2_2025.jpeg'),
+      getImagePath('SIH_3_2025.jpeg'),
     ],
   },
   {
     title: 'Winner – Smart India Hackathon 2024 (College Level)',
     description: 'Led winning project "Smart Skills Evaluator"',
-    image: '/Portfolio-website/images/SIH_1_2024.jpeg',
+    image: getImagePath('SIH_1_2024.jpeg'),
     icon: Award,
     color: 'from-emerald-500 to-teal-500',
     date: '2024',
     details:
       'Applied strong software engineering principles, provided technical guidance, and demonstrated leadership, accountability, time management, and creative problem-solving while leading the winning team through collaborative efforts.',
     gallery: [
-      '/Portfolio-website/images/SIH_1_2024.jpeg',
-      '/Portfolio-website/images/SIH_2_2024.jpeg',
-      '/Portfolio-website/images/SIH_3_2024.jpeg',
+      getImagePath('SIH_1_2024.jpeg'),
+      getImagePath('SIH_2_2024.jpeg'),
+      getImagePath('SIH_3_2024.jpeg'),
     ],
   },
   {
   title: 'Organizer – Google Developer Group on Campus (GDGoC), CIT Bangalore',
   description: 'Led 20+ member tech community impacting 500+ students',
-  image: '/Portfolio-website/images/gdgoc1.jpeg',
+  image: getImagePath('gdgoc1.jpeg'),
   icon: Zap,
   color: 'from-blue-500 to-indigo-500',
   date: '2025–Present',
   details:
     'Providing technical guidance and leadership to a 20+ member core team, organizing workshops and hackathons for 500+ students. Increased community participation by 60% through creative engagement strategies. Coordinated 15+ technical sessions on computer science, data structures, algorithms, and software engineering principles with industry experts while demonstrating strong collaboration, accountability, and time management.',
   gallery: [
-    '/Portfolio-website/images/gdgoc1.jpeg',
-    '/Portfolio-website/images/gdgoc2.jpeg',
-    '/Portfolio-website/images/gdgoc3.jpeg',
+    getImagePath('gdgoc1.jpeg'),
+    getImagePath('gdgoc2.jpeg'),
+    getImagePath('gdgoc3.jpeg'),
   ],
 },
   {
     title: 'Finalist (Top 10) – ProtoVision Ignite 2024',
     description: 'Built ML-powered Android app',
-    image: '/Portfolio-website/images/protovision2024.jpeg',
+    image: getImagePath('protovision2024.jpeg'),
     icon: Star,
     color: 'from-purple-500 to-pink-500',
     date: '2024',
     details:
       'Solved complex problems by developing an ML-powered Android application using strong foundations in data structures, algorithms, and core computer science principles, while demonstrating effective collaboration and team management.',
     gallery: [
-      '/Portfolio-website/images/protovision2024.jpeg',
-      '/Portfolio-website/images/protovision2.jpeg',
-      '/Portfolio-website/images/protovision3.jpeg',
+      getImagePath('protovision2024.jpeg'),
+      getImagePath('protovision2.jpeg'),
+      getImagePath('protovision3.jpeg'),
     ],
   },
   
