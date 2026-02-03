@@ -7,10 +7,10 @@ import Skills from './pages/Skills'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import Achievements from './pages/Achievements'
+import Mentorship from './pages/Mentorship'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
-import SpiderManTransition from './components/SpiderManTransition'
 import { SoundProvider } from './context/SoundContext'
 
 function AppRoutes() {
@@ -19,7 +19,6 @@ function AppRoutes() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <Navbar />
-      <SpiderManTransition />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
@@ -28,6 +27,7 @@ function AppRoutes() {
           <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
           <Route path="/experience" element={<PageTransition><Experience /></PageTransition>} />
           <Route path="/achievements" element={<PageTransition><Achievements /></PageTransition>} />
+          <Route path="/mentorship" element={<PageTransition><Mentorship /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         </Routes>
       </AnimatePresence>

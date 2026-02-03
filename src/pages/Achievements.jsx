@@ -124,7 +124,7 @@ const Achievements = () => {
           Achievements
         </motion.h1>
         <motion.p
-          className="text-xl text-gray-400 text-center mb-16"
+          className="text-xl text-gray-400 text-center mb-4"
           variants={itemVariants}
         >
           Milestones and recognitions in my journey

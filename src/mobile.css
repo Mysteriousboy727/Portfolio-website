@@ -1,0 +1,81 @@
+/* Mobile Optimization Styles */
+
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Adjust font sizes for mobile */
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  /* Improve spacing on mobile */
+  section {
+    @apply py-12 px-4;
+  }
+
+  /* Better container padding */
+  .container {
+    @apply px-4;
+  }
+
+  /* Touch-friendly spacing */
+  .gap-4 {
+    @apply gap-2;
+  }
+
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Optimize animations for mobile */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  /* Extra small devices */
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  /* Stack elements vertically */
+  .grid-cols-2 {
+    @apply grid-cols-1;
+  }
+
+  .grid-cols-3 {
+    @apply grid-cols-1;
+  }
+
+  /* Remove complex animations on very small screens */
+  .animate-float,
+  .animate-rotate {
+    animation: none !important;
+  }
+}
