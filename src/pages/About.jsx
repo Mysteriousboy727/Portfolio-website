@@ -15,7 +15,7 @@ const About = () => {
       degree: 'B.E. Computer Science',
       institution: 'Cambridge Institute of Technology North Campus',
       period: '2023–2027',
-      cgpa: 'CGPA: 8.2',
+      cgpa: 'CGPA: 8.3',
     },
     {
       degree: '12th Grade',

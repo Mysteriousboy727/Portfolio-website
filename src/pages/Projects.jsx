@@ -21,12 +21,12 @@ const Projects = () => {
       demo: '#',
     },
     {
-      title: 'FastAPI Recommendation Engine',
-      subtitle: 'High-Accuracy ML Recommendations',
-      description: 'Built a sophisticated recommendation engine using FastAPI with 92% accuracy. Implements advanced machine learning algorithms for personalized recommendations.',
-      technologies: ['Python', 'FastAPI', 'scikit-learn', 'Pandas', 'NumPy'],
+      title: 'Yantraraksha Network',
+      subtitle: 'AI-Powered ICS/SCADA Cybersecurity Monitoring',
+      description: 'Built a full-stack cybersecurity dashboard for industrial control systems with real-time threat detection, ML-based anomaly analysis, and automated incident response.',
+      technologies: ['Python', 'FastAPI', 'React', 'scikit-learn', 'Leaflet', 'WebSocket'],
       color: 'from-blue-500 to-cyan-500',
-      github: 'https://github.com/Mysteriousboy727/fastapi_recommendation_engine.git',
+      github: 'https://github.com/Mysteriousboy727/Yantraraksha-Network.git',
       demo: '#',
     },
   {

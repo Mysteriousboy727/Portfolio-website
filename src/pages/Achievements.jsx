@@ -29,6 +29,21 @@ const Achievements = () => {
     ],
   },
   {
+    title: '1st Place – Industry Innovation Hackathon 2026',
+    description: 'Won outright among 110+ competing teams in a 24-hour sprint at Sathyabama Institute of Science and Technology, Tamil Nadu',
+    image: getImagePath('win1.1.jpeg'),
+    icon: Trophy,
+    color: 'from-amber-500 to-yellow-500',
+    date: '2026',
+    details:
+      'Secured 1st Place in the Industry Innovation Hackathon 2026 by competing against 110+ teams in a 24-hour sprint at Sathyabama Institute of Science and Technology, Tamil Nadu. The achievement reflected strong teamwork, rapid prototyping, and impactful innovation under pressure.',
+    gallery: [
+      getImagePath('win1.1.jpeg'),
+      getImagePath('Win1.2.jpeg'),
+      getImagePath('win1.3.jpeg'),
+    ],
+  },
+  {
     title: 'Winner – Smart India Hackathon 2024 (College Level)',
     description: 'Led winning project "Smart Skills Evaluator"',
     image: getImagePath('SIH_1_2024.jpeg'),
