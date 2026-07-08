@@ -104,15 +104,20 @@ const Home = () => {
               <ArrowRight className="w-5 h-5" />
             </motion.button>
 
-            <motion.button
+            <motion.a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseEnter={playHoverSound}
+              onClick={() => playClickSound()}
+              download
               className="px-8 py-3 border-2 border-blue-500 text-blue-400 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-500/10 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               Download CV
               <Download className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
           </motion.div>
 
           <motion.div

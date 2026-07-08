@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useSound } from '../context/SoundContext'
 import { ExternalLink, Github, Sparkles } from 'lucide-react'
+import { getImagePath } from '../utils/imageUtils'
 
 const Projects = () => {
   const { playPageTransitionSound, playHoverSound, playClickSound } = useSound()
@@ -13,6 +14,7 @@ const Projects = () => {
   const projects = [
     {
       title: 'AEGIS',
+      image: 'protovision3.jpeg',
       subtitle: 'AI Fraud Prevention Engine',
       description: 'Advanced fraud prevention system using transformer models, Kafka for real-time processing, and federated learning for privacy-preserving ML. Built with cutting-edge AI technologies to detect and prevent fraudulent activities.',
       technologies: ['Python', 'TensorFlow', 'Kafka', 'Federated Learning', 'Transformers'],
@@ -22,6 +24,7 @@ const Projects = () => {
     },
     {
       title: 'Yantraraksha Network',
+      image: 'protovision2.jpeg',
       subtitle: 'AI-Powered ICS/SCADA Cybersecurity Monitoring',
       description: 'Built a full-stack cybersecurity dashboard for industrial control systems with real-time threat detection, ML-based anomaly analysis, and automated incident response.',
       technologies: ['Python', 'FastAPI', 'React', 'scikit-learn', 'Leaflet', 'WebSocket'],
@@ -30,7 +33,8 @@ const Projects = () => {
       demo: '#',
     },
   {
-    title: 'High-Performance Go Web Server',
+      title: 'High-Performance Go Web Server',
+      image: 'win1.1.jpeg',
     subtitle: 'Scalable Backend System',
     description: 'Developed a high-performance web server using Go, optimized for handling concurrent requests with minimal latency. Features efficient routing and middleware support.',
     technologies: ['Go', 'Goroutines', 'HTTP/2', 'JSON'],
@@ -40,6 +44,7 @@ const Projects = () => {
   },
   {
     title: 'PrognosAI – AI-Driven Predictive Maintenance',
+    image: 'SIH_1_2025.jpeg',
     subtitle: 'RUL Prediction using Time-Series Data',
     description:
       'Built an AI-based predictive maintenance system to estimate Remaining Useful Life (RUL) using multivariate time-series sensor data. Implemented an LSTM model on the NASA CMAPSS dataset with an interactive dashboard for RUL trends and alerts.',
@@ -108,58 +113,78 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               onMouseEnter={playHoverSound}
-              className="glass-effect p-8 rounded-2xl border border-gray-700/50 hover:border-gray-600 transition-all group"
+              className="bg-gray-900 p-0 rounded-2xl border border-gray-700/50 hover:border-gray-600 transition-all group overflow-hidden"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="flex items-center mb-2">
-                    <Sparkles className={`w-5 h-5 mr-2 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`} />
-                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+              <div className="w-full h-40 md:h-48 overflow-hidden">
+                <img
+                  src={getImagePath(project.image)}
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <div>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{project.technologies.slice(0,3).join('  ')}</p>
+                    <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                    <p className="text-gray-400 text-sm">{project.subtitle}</p>
                   </div>
-                  <p className="text-gray-400 text-sm">{project.subtitle}</p>
+                  <Sparkles className={`w-6 h-6 ml-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`} />
                 </div>
-              </div>
 
-              <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                <p className="text-gray-300 mb-6 text-sm leading-relaxed">{project.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 rounded-full text-xs font-medium bg-gray-800 text-gray-300"
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-gray-800 text-gray-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playClickSound()}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition-colors"
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </motion.a>
 
-              <div className="flex gap-4">
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={playClickSound}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="flex items-center px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition-colors"
-                >
-                  <Github className="w-4 h-4 mr-2" />
-                  Code
-                </motion.a>
-                <motion.a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={playClickSound}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`flex items-center px-4 py-2 rounded-lg bg-gradient-to-r ${project.color} text-white transition-all`}
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Demo
-                </motion.a>
+                  {project.demo && project.demo !== '#' ? (
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => playClickSound()}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex items-center px-4 py-2 rounded-lg bg-gradient-to-r ${project.color} text-white transition-all`}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Live
+                    </motion.a>
+                  ) : (
+                    <button
+                      className="flex items-center px-4 py-2 rounded-lg border border-gray-700 text-gray-300 bg-transparent"
+                      disabled
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Cached
+                    </button>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}
