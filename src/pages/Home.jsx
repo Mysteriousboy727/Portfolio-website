@@ -56,6 +56,10 @@ const Home = () => {
     },
   }
 
+  const getResumeHref = () => {
+    return `${import.meta.env.BASE_URL}resume/Soumys_Ranjan_Resume.pdf`
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 py-20">
       <motion.div
@@ -105,12 +109,12 @@ const Home = () => {
             </motion.button>
 
             <motion.a
-              href="/resume.pdf"
+              href={getResumeHref()}
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={playHoverSound}
               onClick={() => playClickSound()}
-              download
+              download="Soumya_Ranjan_Nayak_Resume.pdf"
               className="px-8 py-3 border-2 border-blue-500 text-blue-400 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-500/10 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}

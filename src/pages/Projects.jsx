@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useSound } from '../context/SoundContext'
 import { ExternalLink, Github, Sparkles } from 'lucide-react'
-import { getImagePath } from '../utils/imageUtils'
 
 const Projects = () => {
   const { playPageTransitionSound, playHoverSound, playClickSound } = useSound()
@@ -11,11 +10,32 @@ const Projects = () => {
     playPageTransitionSound()
   }, [playPageTransitionSound])
 
+  const projectColors = {
+    'AEGIS': ['#ef4444', '#f97316'],
+    'Yantraraksha Network': ['#3b82f6', '#06b6d4'],
+    'High-Performance Go Web Server': ['#22c55e', '#14b8a6'],
+    'PrognosAI – AI-Driven Predictive Maintenance': ['#6366f1', '#0ea5e9'],
+  }
+
+  const getProjectImage = (title, subtitle) => {
+    const [start, end] = projectColors[title] || ['#1f2937', '#4b5563']
+    const svg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${start}"/><stop offset="100%" stop-color="${end}"/></linearGradient></defs><rect width="800" height="500" rx="40" ry="40" fill="url(%23g)"/><text x="50%" y="46%" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle">${title}</text><text x="50%" y="64%" font-family="Inter, Arial, sans-serif" font-size="22" fill="#e5e7eb" text-anchor="middle">${subtitle}</text></svg>`
+    return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
+  }
+
+  const getImageSrc = (project) => {
+    if (project.image) {
+      const imgPath = project.image.replace(/^\//, '')
+      return `${import.meta.env.BASE_URL}${imgPath}`
+    }
+    return getProjectImage(project.title, project.subtitle)
+  }
+
   const projects = [
     {
       title: 'AEGIS',
-      image: 'protovision3.jpeg',
       subtitle: 'AI Fraud Prevention Engine',
+      image: '/images/AEGIS-IMAGE.png',
       description: 'Advanced fraud prevention system using transformer models, Kafka for real-time processing, and federated learning for privacy-preserving ML. Built with cutting-edge AI technologies to detect and prevent fraudulent activities.',
       technologies: ['Python', 'TensorFlow', 'Kafka', 'Federated Learning', 'Transformers'],
       color: 'from-red-500 to-orange-500',
@@ -24,43 +44,43 @@ const Projects = () => {
     },
     {
       title: 'Yantraraksha Network',
-      image: 'protovision2.jpeg',
       subtitle: 'AI-Powered ICS/SCADA Cybersecurity Monitoring',
+      image: '/images/Yantrarakshna-network.png',
       description: 'Built a full-stack cybersecurity dashboard for industrial control systems with real-time threat detection, ML-based anomaly analysis, and automated incident response.',
       technologies: ['Python', 'FastAPI', 'React', 'scikit-learn', 'Leaflet', 'WebSocket'],
       color: 'from-blue-500 to-cyan-500',
       github: 'https://github.com/Mysteriousboy727/Yantraraksha-Network.git',
       demo: '#',
     },
-  {
+    {
       title: 'High-Performance Go Web Server',
-      image: 'win1.1.jpeg',
-    subtitle: 'Scalable Backend System',
-    description: 'Developed a high-performance web server using Go, optimized for handling concurrent requests with minimal latency. Features efficient routing and middleware support.',
-    technologies: ['Go', 'Goroutines', 'HTTP/2', 'JSON'],
-    color: 'from-green-500 to-emerald-500',
-    github: 'https://github.com/Mysteriousboy727/gofr.git',
-    demo: '#',
-  },
-  {
-    title: 'PrognosAI – AI-Driven Predictive Maintenance',
-    image: 'SIH_1_2025.jpeg',
-    subtitle: 'RUL Prediction using Time-Series Data',
-    description:
-      'Built an AI-based predictive maintenance system to estimate Remaining Useful Life (RUL) using multivariate time-series sensor data. Implemented an LSTM model on the NASA CMAPSS dataset with an interactive dashboard for RUL trends and alerts.',
-    technologies: [
-      'Python',
-      'TensorFlow/Keras',
-      'LSTM',
-      'Pandas',
-      'Streamlit',
-      'Docker',
-    ],
-    color: 'from-blue-500 to-cyan-500',
-    github: 'https://github.com/Mysteriousboy727/Prognos-ai',
-    demo: '',
-  },
-]
+      subtitle: 'Scalable Backend System',
+      image: '/images/Go-web-services.png',
+      description: 'Developed a high-performance web server using Go, optimized for handling concurrent requests with minimal latency. Features efficient routing and middleware support.',
+      technologies: ['Go', 'Goroutines', 'HTTP/2', 'JSON'],
+      color: 'from-green-500 to-emerald-500',
+      github: 'https://github.com/Mysteriousboy727/gofr.git',
+      demo: '#',
+    },
+    {
+      title: 'PrognosAI – AI-Driven Predictive Maintenance',
+      subtitle: 'RUL Prediction using Time-Series Data',
+      image: '/images/prognos-ai.png',
+      description:
+        'Built an AI-based predictive maintenance system to estimate Remaining Useful Life (RUL) using multivariate time-series sensor data. Implemented an LSTM model on the NASA CMAPSS dataset with an interactive dashboard for RUL trends and alerts.',
+      technologies: [
+        'Python',
+        'TensorFlow/Keras',
+        'LSTM',
+        'Pandas',
+        'Streamlit',
+        'Docker',
+      ],
+      color: 'from-blue-500 to-cyan-500',
+      github: 'https://github.com/Mysteriousboy727/Prognos-ai',
+      demo: '',
+    },
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,8 +139,9 @@ const Projects = () => {
             >
               <div className="w-full h-40 md:h-48 overflow-hidden">
                 <img
-                  src={getImagePath(project.image)}
+                  src={getImageSrc(project)}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -128,7 +149,9 @@ const Projects = () => {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{project.technologies.slice(0,3).join('  ')}</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      {project.technologies.slice(0, 3).join(' • ')}
+                    </p>
                     <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
                     <p className="text-gray-400 text-sm">{project.subtitle}</p>
                   </div>
